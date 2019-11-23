@@ -2,8 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <div style="width: 1300px; margin: auto;">
-        <header style="padding: 10px;">
+    <div style="width: 1400px; margin: auto;">
+        <header style="padding: 10px; margin-bottom:10px;">
             <img src="~/img/logo.png" height="200">
         </header>
         <div class="card border-primary mb-3">
@@ -13,8 +13,8 @@
                 </p>
             </div>
             <div class="card-body">
-                <table class="table table-bordered" style="margin: auto;">
-                    <tr class="row">
+                <table class="table table-bordered">
+                    <tr>
                         <td>
                             <div>
                                 <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
@@ -40,7 +40,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr class="row">
+                    <tr>
                         <td>
                             <div>
                                 <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
@@ -52,9 +52,9 @@
             </div>
         </div>
 
-        <div style="width: 900px; margin: auto; margin-top: 20px;">
+        <div style="width: 940px; margin: auto; margin-top: 20px;">
 
-            <div class="card border-danger mb-3" style="max-width: 20rem;">
+            <div class="card border-danger mb-3">
                 <div class="card-header">
                     <select id="select" class="form-control">
                         <option value="cam1">Kamera 1</option>
@@ -68,7 +68,9 @@
                 </div>
                 <div class="card-body">
                     <h4 class="card-title" id="tytul">Kamera</h4>
-                    <iframe width="900" height="750" allowfullscreen="true" id="podglad" allow="camera" frameborder="0"></iframe>
+                    <div style="position:relative; height:750px;">
+                        <iframe width="300" height="250" id="podglad" style="position:absolute; top:250px; left:300px; transform:scale(3)" allow="camera" frameborder="0"></iframe>
+                        </div>
                 </div>
             </div>
         </div>
