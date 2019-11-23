@@ -2,7 +2,87 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div style="width: 1300px; margin: auto;">
+        <header style="padding: 10px;">
+            <img src="~/img/logo.png" height="200">
+        </header>
+        <div class="card border-primary mb-3">
+            <div class="card-header">
+                <p style="font-size: 20px; padding: 5px;">
+                    Wykryte zagrożenia: <span id="ileZagrozen">5</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered" style="margin: auto;">
+                    <tr class="row">
+                        <td>
+                            <div>
+                                <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
+                                <p class="opisCam">Kamera 1</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
+                                <p class="opisCam">Kamera 2</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
+                                <p class="opisCam">Kamera 3</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
+                                <p class="opisCam">Kamera 4</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <td>
+                            <div>
+                                <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
+                                <p class="opisCam">Kamera 5</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="width: 900px; margin: auto; margin-top: 20px;">
+
+            <div class="card border-danger mb-3" style="max-width: 20rem;">
+                <div class="card-header">
+                    <select id="select" class="form-control">
+                        <option value="cam1">Kamera 1</option>
+                        <option value="cam2">Kamera 2</option>
+                        <option value="cam3">Kamera 3</option>
+                        <option value="cam4">Kamera 4</option>
+                        <option value="cam5">Kamera 5</option>
+                        <option value="cam6">Kamera 6</option>
+                        <option value="cam7">Kamera 7</option>
+                    </select>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title" id="tytul">Kamera</h4>
+                    <iframe width="900" height="750" allowfullscreen="true" id="podglad" allow="camera" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    $('#select').change(function () {
+      let select = $('#select')
+      let value = select.val();
+      if (value == "cam1") {
+        $('#podglad').attr('src', 'http://localhost:3001');
+      }
+      else {
+        $('#podglad').attr('src', '');
+      }
+    });
+    </script>
