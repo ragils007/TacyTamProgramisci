@@ -16,4 +16,9 @@
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Db.Pgsql\Db.Pgsql.csproj" />
+  </ItemGroup>
+
 </Project>
