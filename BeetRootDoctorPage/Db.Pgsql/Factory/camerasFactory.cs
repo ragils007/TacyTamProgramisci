@@ -42,31 +42,5 @@ namespace Db.Pgsql.Factory
                 .Bind("id", id)
                 .Execute();
         }
-
-        public cameras GetBy_Id(long id)
-        {
-            var data = this.pg.Query($"SELECT * FROM cameras WHERE id=:id")
-                .Bind("id", id)
-                .Fetch();
-
-            if (data.Rows.Count == 0) return null;
-
-            var cam = this.GetItemFromDatarow(data.Rows[0]);
-            return cam;
-        }
-
-        private cameras GetItemFromDatarow(DataRow dr)
-        {
-            var item = new cameras
-            {
-                id = Convert.ToInt64(dr["id"]),
-                field_fk = Convert.ToInt64(dr["field_fk"]),
-                name = Convert.ToString(dr["name"]),
-                geolat = Convert.ToString(dr["geolat"]),
-                geolon = Convert.ToString(dr["geolon"]),
-            };
-
-            return item;
-        }
     }
 }
