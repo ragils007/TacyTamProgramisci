@@ -7,8 +7,10 @@ namespace Db.Pgsql.Test
     {
         static void Main(string[] args)
         {
-            var db = new Postgres();
-            var ret = db.Fetch("SELECT * FROM cameras");
+            var db = new Po8stgres();
+            var ret = db.Query("SELECT * FROM cameras WHERE id=:id")
+                .Bind("id", 1)
+                .Fetch();
 
             var fac = new camerasFactory(db);
             fac.Add(1, "Nowa kamera", "12.34", "34.56");
