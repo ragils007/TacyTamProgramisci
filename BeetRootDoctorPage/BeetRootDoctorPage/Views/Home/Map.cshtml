@@ -15,10 +15,10 @@
         var markers = new OpenLayers.Layer.Markers("Markers");
         map.addLayer(markers);
 
-    var size = new OpenLayers.Size(21,25);
+    var size = new OpenLayers.Size(28,28);
     var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    var icon = new OpenLayers.Icon('https://www.clipartmax.com/png/small/117-1179307_filemap-pin-icon-green-map-marker-png-green.png', size, offset);
-    var iconRed = new OpenLayers.Icon('https://simg.nicepng.com/png/small/23-230399_google-maps-pin-png-red-map-marker-png.png', size, offset);
+    var icon = new OpenLayers.Icon('https://cdn2.iconfinder.com/data/icons/gpsmapicons/green/gpsmapicons01.png', size, offset);
+    var iconRed = new OpenLayers.Icon('https://cdn0.iconfinder.com/data/icons/gpsmapicons/red/gpsmapicons06.png', size, offset);
 
     for (var kv in json)
     {
@@ -43,3 +43,11 @@
 
     map.setCenter(lonLat, zoom);
 </script>
+<div style="width: 100; height: 100">
+    <p style="margin-top: 20px;">
+        <img src="https://cdn2.iconfinder.com/data/icons/gpsmapicons/green/gpsmapicons01.png" style="height: 30px; margin-right: 10px;"/>Ostatni pomiar nie wykazał obecności chwościka
+    </p>
+    <p>
+        <img src="https://cdn0.iconfinder.com/data/icons/gpsmapicons/red/gpsmapicons06.png" style="height: 30px; margin-right: 10px;"/>Ostatni pomiar wykazał obecność chwościka
+    </p>
+</div>

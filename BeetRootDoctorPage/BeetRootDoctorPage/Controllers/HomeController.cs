@@ -54,6 +54,11 @@ namespace BeetRootDoctorPage.Controllers
             return View("Map");
         }
 
+        public IActionResult Chwasty()
+        {
+            return View("Chwasty");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
