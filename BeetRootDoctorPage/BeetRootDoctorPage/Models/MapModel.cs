@@ -27,7 +27,7 @@ namespace BeetRootDoctorPage.Models
 (
     select c.id, c.geolat as lat
         , c.geolon  as lon
-        , case when wykrytocolumn1 = 1 then 1 else 0 end as is_wykryty 
+        , case when wykrytocolumn1 = 1 and log_date > now() - interval '1' minute then 1 else 0 end as is_wykryty 
         , rank() over(partition by c.id order by cl.id desc) as rn
     from cameras c
     left outer join cameralog cl on cl.camera_fk = c.id and cl.field_fk = c.currentfield_fk
