@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import $ from "jquery"
 import html2canvas from 'html2canvas';
 
+var dat = new Date();
 
 const SCORE_DIGITS = 4
 
@@ -31,18 +32,22 @@ const renderPredictions = (predictions, canvasRef) => {
     ctx.fillStyle = '#00FFFF'
     const textWidth = ctx.measureText(getLabelText(prediction)).width
     const textHeight = parseInt(font, 10) // base 10
-    let video = document.getElementsByTagName('video')[0]
-    ctx.fillRect(x, y, textWidth + 4, textHeight + 4)
-    var canvas = document.createElement("canvas");
-    canvas.width = ctx.canvas.width;
-    canvas.height = ctx.canvas.height;
-    let context = canvas.getContext("2d");
+    let d = new Date();
+    if (d > dat) {
+      let video = document.getElementsByTagName('video')[0]
+      ctx.fillRect(x, y, textWidth + 4, textHeight + 4)
+      var canvas = document.createElement("canvas");
+      canvas.width = ctx.canvas.width;
+      canvas.height = ctx.canvas.height;
+      let context = canvas.getContext("2d");
 
-    context.drawImage(video, 0, 0, ctx.canvas.width, ctx.canvas.height);
+      context.drawImage(video, 0, 0, ctx.canvas.width, ctx.canvas.height);
+      dat = new Date(dat.getTime() + 1 * 60000)
 
-    //ctx.drawImage(video, 0, 0, ctx.canvas.width, ctx.canvas.height);
-    send(canvas.toDataURL("image/jpg"));
-    //takeScreenShot();
+      //ctx.drawImage(video, 0, 0, ctx.canvas.width, ctx.canvas.height);
+      send(canvas.toDataURL("image/jpg"));
+      //takeScreenShot();
+    }
   })
 
   predictions.forEach(prediction => {
