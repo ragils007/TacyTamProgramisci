@@ -7,7 +7,7 @@ namespace Db.Pgsql.Raw
 {
     public class cameras
     {
-        public long id { get; private set; }
+        public long id { get; set; }
         public long currentfield_fk { get; set; }
         public string name { get; set; }
         public string geolat { get; set; }

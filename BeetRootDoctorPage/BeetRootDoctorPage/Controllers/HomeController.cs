@@ -25,6 +25,11 @@ namespace BeetRootDoctorPage.Controllers
             return View("History");
         }
 
+        public IActionResult Map()
+        {
+            return View("Map");
+        }
+
         public IActionResult Chwasty()
         {
             return View("Chwasty");
