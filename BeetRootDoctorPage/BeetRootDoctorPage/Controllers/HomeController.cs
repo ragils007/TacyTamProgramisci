@@ -30,14 +30,22 @@ namespace BeetRootDoctorPage.Controllers
         [HttpPost]
         public IActionResult Save(string img)
         {
-            var dd = img.Split(',');
-            var teraz = DateTime.Now;
-            string filePath = $"{teraz.Year}_{teraz.Month}_{teraz.Day}_{teraz.Hour}_{teraz.Minute}_{teraz.Second}_{teraz.Millisecond}.jpg";
-            System.IO.File.WriteAllBytes(filePath, Convert.FromBase64String(dd[1]));
-            var db = new Postgres();
-            var log = new cameralogFactory(db);
-            log.Add(1, 1, filePath,"1","1","nazwa");
+            using (var db = new Postgres())
+            {
+                var data = DateTime.Now.AddMinutes(-1);
+                var cameralogDt = db.Query("select id from cameralog where log_date < :data").Bind("data", data);
+                var ile = cameralogDt.Fetch().Rows.Count;
+                if (ile == 0)
+                {
+                    var dd = img.Split(',');
+                    var teraz = DateTime.Now;
+                    string filePath = $"{teraz.Year}_{teraz.Month}_{teraz.Day}_{teraz.Hour}_{teraz.Minute}_{teraz.Second}_{teraz.Millisecond}.jpg";
+                    System.IO.File.WriteAllBytes(filePath, Convert.FromBase64String(dd[1]));
 
+                    var log = new cameralogFactory(db);
+                    log.Add(1, 1, filePath, "1", "1", "nazwa", 1);
+                }
+            }
             return Ok();
         }
 

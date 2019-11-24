@@ -15,5 +15,6 @@ namespace Db.Pgsql.Raw
         public string geolon { get; set; }
         public string name { get; set; }
         public DateTime log_date { get; }
+        public int wykrytocolumn1 { get; }
     }
 }

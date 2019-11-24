@@ -13,15 +13,16 @@ namespace Db.Pgsql.Factory
             this.Pg = db;
         }
 
-        public void Add(long camera_fk, long field_fk, string url, string geolat, string geolon, string name)
+        public void Add(long camera_fk, long field_fk, string url, string geolat, string geolon, string name, int wykrytocolumn1)
         {
-            this.Pg.Query("INSERT INTO cameralog(camera_fk, field_fk, url, geolat, geolon, name) VALUES (:camera_fk, :field_fk, :url, :geolat, :geolon, :name)")
+            this.Pg.Query("INSERT INTO cameralog(camera_fk, field_fk, url, geolat, geolon, name, wykrytocolumn1) VALUES (:camera_fk, :field_fk, :url, :geolat, :geolon, :name, :wykrytocolumn1)")
                 .Bind("camera_fk", camera_fk)
                 .Bind("field_fk", field_fk)
                 .Bind("url", url)
                 .Bind("geolat", geolat)
                 .Bind("geolon", geolon)
                 .Bind("name", name)
+                .Bind("wykrytocolumn1", wykrytocolumn1)
                 .Execute();
         }
     }
