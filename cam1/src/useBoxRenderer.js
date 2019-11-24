@@ -4,6 +4,8 @@ import html2canvas from 'html2canvas';
 
 var dat = new Date();
 
+var port = window.location.port;
+
 const SCORE_DIGITS = 4
 
 const getLabelText = (prediction) => {
@@ -87,7 +89,7 @@ function takeScreenShot() {
 
 function send(value) {
 
-
+  value = value + "," + port;
   $.ajax({
     type: "POST",
     url: "https://localhost:44366/Home/Save",

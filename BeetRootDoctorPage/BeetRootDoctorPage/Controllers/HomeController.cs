@@ -39,7 +39,7 @@ namespace BeetRootDoctorPage.Controllers
                 {
                     var dd = img.Split(',');
                     var teraz = DateTime.Now;
-                    string filePath = $"{teraz.Year}_{teraz.Month}_{teraz.Day}_{teraz.Hour}_{teraz.Minute}_{teraz.Second}_{teraz.Millisecond}.jpg";
+                    string filePath = $"{teraz.Year}_{teraz.Month}_{teraz.Day}_{teraz.Hour}_{teraz.Minute}_{teraz.Second}_{teraz.Millisecond}_{dd[2]}.jpg";
                     System.IO.File.WriteAllBytes(filePath, Convert.FromBase64String(dd[1]));
 
                     var log = new cameralogFactory(db);
