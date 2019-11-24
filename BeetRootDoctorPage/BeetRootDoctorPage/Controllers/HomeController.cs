@@ -25,6 +25,11 @@ namespace BeetRootDoctorPage.Controllers
             return View("History");
         }
 
+        public IActionResult Map()
+        {
+            return View("Map");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

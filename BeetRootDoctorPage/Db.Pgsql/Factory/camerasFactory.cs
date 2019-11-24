@@ -42,5 +42,27 @@ namespace Db.Pgsql.Factory
                 .Bind("id", id)
                 .Execute();
         }
+
+        public List<cameras> GetList()
+        {
+            var data = pg.Query("SELECT * FROM cameras").Fetch();
+
+            var ret = new List<cameras>();
+            foreach(DataRow dr in data.Rows)
+            {
+                var item = new cameras
+                {
+                    id = Convert.ToInt64(dr["id"]),
+                    currentfield_fk = Convert.ToInt64(dr["currentfield_fk"]),
+                    name = Convert.ToString(dr["name"]),
+                    geolat = Convert.ToString(dr["geolat"]),
+                    geolon = Convert.ToString(dr["geolon"])
+                };
+
+                ret.Add(item);
+            }
+
+            return ret;
+        }
     }
 }
