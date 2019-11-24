@@ -1,7 +1,10 @@
 ﻿using System;
+using Db.Pgsql.Factory;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Db.Pgsql;
+using System.Data;
 
 namespace BeetRootDoctorPage.Models
 {
@@ -10,21 +13,25 @@ namespace BeetRootDoctorPage.Models
         public static List<HistoriaViewModel> GetHistoriaZdarzen()
         {
             List<HistoriaViewModel> historiaZdarzen = new List<HistoriaViewModel>();
-            /*
-              //#TODO Zapytanie o zdarzenia
-              foreach (var rawWizyta in raw)
-              {
-                  listaWizyt.Add(new WizytyViewModel()
-                  {
-                      dataRozpoczeciaWizyty = rawWizyta.DATA_OD,
-                      dataZakonczeniaWizyty = rawWizyta.DATA_DO,
-                      czasWizyty = rawWizyta.DATA_DO != null ? rawWizyta.DATA_DO - rawWizyta.DATA_OD : null,
-                      kodKrotkiKlienta = wybranyKlient.KodKrotki,
-                      idPracownika = rawWizyta.PRACOWNIK_W_FK,
-                      notatka = rawWizyta.NOTATKA
-                  });
-              }
-              */
+
+            var db = new Postgres();
+            var cameralogDt = db.Fetch("SELECT * FROM cameralog");
+
+
+            foreach (DataRow dr in cameralogDt.Rows)
+            {
+                HistoriaViewModel newObj = new HistoriaViewModel();
+                newObj.id = Convert.ToInt32(dr["id"]);
+                newObj.aktualnaNazwaKamery = Convert.ToString(dr["camera_fk"]);
+                newObj.aktualnaNazwaPola = Convert.ToString(dr["field_fk"]);
+                newObj.historycznaNazwaKamery = Convert.ToString(dr["name"]);
+                newObj.historycznaNazwaPola = Convert.ToString(dr["field_fk"]);
+                newObj.urlZdjecia = Convert.ToString(dr["url"]);
+                newObj.geolat = Convert.ToString(dr["geolat"]);
+                newObj.geolon = Convert.ToString(dr["geolon"]);
+
+                historiaZdarzen.Add(newObj);
+            }
 
             historiaZdarzen.Add(new HistoriaViewModel()
             {
