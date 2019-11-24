@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Mapy";
+    //var camerasList = Newtonsoft.Json.JsonConvert.SerializeObject(MapModel.GetCamerasList().Select(x => new { lat = x.geolat, lon = x.geolon, }));
+    var camerasList = MapModel.GetCamerasList();
+}
+<div id="mapdiv" style="width: 100%; height: 500px;"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js"></script>
+<script>
+    var json = @Html.Raw(Json.Serialize(@camerasList));
+    map = new OpenLayers.Map("mapdiv");
+    map.addLayer(new OpenLayers.Layer.OSM());
+
+    var lonLat = new OpenLayers.LonLat();
+
+        var markers = new OpenLayers.Layer.Markers("Markers");
+        map.addLayer(markers);
+
+    var size = new OpenLayers.Size(21,25);
+    var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+    var icon = new OpenLayers.Icon('https://www.clipartmax.com/png/small/117-1179307_filemap-pin-icon-green-map-marker-png-green.png', size, offset);
+    var iconRed = new OpenLayers.Icon('https://simg.nicepng.com/png/small/23-230399_google-maps-pin-png-red-map-marker-png.png', size, offset);
+
+    for (var kv in json)
+    {
+        //lonLat = new OpenLayers.LonLat(json[kv].lon, json[kv].lat);
+        lonLat = new OpenLayers.LonLat(json[kv].lon, json[kv].lat)
+            .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+            );
+
+        //markers.addMarker(new OpenLayers.Marker(lonLat, icon));
+
+        if(json[kv].is_wykryty == 1) markers.addMarker(new OpenLayers.Marker(lonLat, iconRed.clone()));
+        else markers.addMarker(new OpenLayers.Marker(lonLat, icon.clone()));
+
+
+        ////marker.setUrl('https://www.pinclipart.com/picdir/middle/174-1747068_vector-graphics-google-map-marker-green-clipart.png');
+        /*markers.addMarker(marker)*/;
+    }
+
+    var zoom = 16;
+
+    map.setCenter(lonLat, zoom);
+</script>
