@@ -12234,11 +12234,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\BeetRootDoctorPage\\BeetRootDoctorPage.csproj",
+      "projectUniqueName": "D:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\BeetRootDoctorPage\\BeetRootDoctorPage.csproj",
       "projectName": "BeetRootDoctorPage",
-      "projectPath": "d:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\BeetRootDoctorPage\\BeetRootDoctorPage.csproj",
+      "projectPath": "D:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\BeetRootDoctorPage\\BeetRootDoctorPage.csproj",
       "packagesPath": "C:\\Users\\Brt\\.nuget\\packages\\",
-      "outputPath": "d:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\BeetRootDoctorPage\\obj\\",
+      "outputPath": "D:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\BeetRootDoctorPage\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12257,8 +12257,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "d:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\Db.Pgsql\\Db.Pgsql.csproj": {
-              "projectPath": "d:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\Db.Pgsql\\Db.Pgsql.csproj"
+            "D:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\Db.Pgsql\\Db.Pgsql.csproj": {
+              "projectPath": "D:\\_dev\\C#\\_git\\TacyTamProgramisci\\BeetRootDoctorPage\\Db.Pgsql\\Db.Pgsql.csproj"
             }
           }
         }
