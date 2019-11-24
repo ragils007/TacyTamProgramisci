@@ -19,7 +19,9 @@
                         <th scope="col">Historyczna nazwa kamery</th>
                         <th scope="col">Długość geograficzna</th>
                         <th scope="col">Szerokość geograficzna</th>
+                        <th scope="col">Data zdarzenia</th>
                         <th scope="col">Zdjęcie zdarzenia</th>
+                        <th scope="col">Podglad online</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +34,13 @@
                         <td>@zdarzenie.historycznaNazwaKamery</td>
                         <td>@zdarzenie.geolat</td>
                         <td>@zdarzenie.geolon</td>
+                        <td>@zdarzenie.dataZdarzenia</td>
                         <td></td>
+                        <td>
+                            <a asp-action="Index" class="btn btn-primary">
+                                Zobacz online
+                            </a>
+                        </td>
                     </tr>
                         }
                 </tbody>

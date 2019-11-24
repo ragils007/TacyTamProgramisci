@@ -27,7 +27,7 @@ namespace BeetRootDoctorPage.Models
                 newObj.urlZdjecia = Convert.ToString(dr["url"]);
                 newObj.geolat = Convert.ToString(dr["geolat"]);
                 newObj.geolon = Convert.ToString(dr["geolon"]);
-
+                newObj.dataZdarzenia = Convert.ToString(dr["log_date"]);
                 historiaZdarzen.Add(newObj);
             }
             return historiaZdarzen;

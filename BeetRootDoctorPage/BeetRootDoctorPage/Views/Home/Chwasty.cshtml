@@ -1,12 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";   
+﻿
+@{
+    ViewData["Title"] = "Chwasty";
 }
+
+
 
 <div style="width: 1400px; margin: auto;">
     <header style="padding: 10px; margin-bottom:10px;">
         <img src="~/img/logo.png" height="200">
     </header>
-    <h1>Chwoscik</h1>
+    <h1>Chwasty</h1>
 
     <div class="card border-primary mb-3">
         <div class="card-header">
@@ -19,25 +22,25 @@
                 <tr>
                     <td>
                         <div>
-                            <iframe width="300" height="250" src="http://localhost:3000" allow="camera" frameborder="0"></iframe>
+                            <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
                             <p class="opisCam">Kamera 1</p>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <iframe width="300" height="250" src="http://localhost:3000" allow="camera" frameborder="0"></iframe>
+                            <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
                             <p class="opisCam">Kamera 2</p>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <iframe width="300" height="250" src="http://localhost:3000" allow="camera" frameborder="0"></iframe>
+                            <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
                             <p class="opisCam">Kamera 3</p>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <iframe width="300" height="250" src="http://localhost:3000" allow="camera" frameborder="0"></iframe>
+                            <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
                             <p class="opisCam">Kamera 4</p>
                         </div>
                     </td>
@@ -45,7 +48,7 @@
                 <tr>
                     <td>
                         <div>
-                            <iframe width="300" height="250" src="http://localhost:3000" allow="camera" frameborder="0"></iframe>
+                            <iframe width="300" height="250" src="http://localhost:3001" allow="camera" frameborder="0"></iframe>
                             <p class="opisCam">Kamera 5</p>
                         </div>
                     </td>
@@ -83,7 +86,7 @@
         let select = $('#select')
         let value = select.val();
         if (value == "cam1") {
-            $('#podglad').attr('src', 'http://localhost:3000');
+            $('#podglad').attr('src', 'http://localhost:3001');
         }
         else {
             $('#podglad').attr('src', '');

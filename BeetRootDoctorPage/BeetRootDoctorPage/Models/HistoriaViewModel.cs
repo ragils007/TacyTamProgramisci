@@ -14,5 +14,6 @@ namespace BeetRootDoctorPage.Models
         public string urlZdjecia { get; set; }
         public string geolat { get; set; }
         public string geolon { get; set; }
+        public string dataZdarzenia { get; set; }
     }
 }
