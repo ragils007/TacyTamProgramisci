@@ -15,10 +15,10 @@ namespace BeetRootDoctorPage.Models
             List<HistoriaViewModel> historiaZdarzen = new List<HistoriaViewModel>();
 
             var db = new Postgres();
-            var cameralogDt = db.Fetch("SELECT * FROM cameralog");
+            var cameralogDt = db.Query("SELECT * FROM cameralog");
 
 
-            foreach (DataRow dr in cameralogDt.Rows)
+            foreach (DataRow dr in cameralogDt.Fetch().Rows)
             {
                 HistoriaViewModel newObj = new HistoriaViewModel();
                 newObj.id = Convert.ToInt32(dr["id"]);

@@ -7,7 +7,7 @@ namespace Db.Pgsql.Test
     {
         static void Main(string[] args)
         {
-            var db = new Po8stgres();
+            var db = new Postgres();
             var ret = db.Query("SELECT * FROM cameras WHERE id=:id")
                 .Bind("id", 1)
                 .Fetch();
