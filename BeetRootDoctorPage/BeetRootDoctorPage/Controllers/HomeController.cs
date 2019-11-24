@@ -20,6 +20,13 @@ namespace BeetRootDoctorPage.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Save(int test)
+        {
+
+            return Ok();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
