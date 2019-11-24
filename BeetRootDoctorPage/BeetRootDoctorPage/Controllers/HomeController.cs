@@ -20,17 +20,9 @@ namespace BeetRootDoctorPage.Controllers
             return View();
         }
 
-
-        [HttpPost]
-        public IActionResult Save(int test)
-        {
-            return Ok();
-        }
-
         public IActionResult History()
         {
             return View("History");
-
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
