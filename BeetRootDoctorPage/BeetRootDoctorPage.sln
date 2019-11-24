@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeetRootDoctorPage", "BeetRootDoctorPage\BeetRootDoctorPage.csproj", "{27D19A5E-44F7-4027-A468-346AD973AF88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeetRootDoctorPage", "BeetRootDoctorPage\BeetRootDoctorPage.csproj", "{27D19A5E-44F7-4027-A468-346AD973AF88}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Db.Pgsql", "Db.Pgsql\Db.Pgsql.csproj", "{AEBAF3F4-7316-4887-B0BD-48E3A10678BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Db.Pgsql.Test", "Db.Pgsql.Test\Db.Pgsql.Test.csproj", "{F1E5348D-0593-4281-94FD-7CED4BA1219E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{27D19A5E-44F7-4027-A468-346AD973AF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27D19A5E-44F7-4027-A468-346AD973AF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27D19A5E-44F7-4027-A468-346AD973AF88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEBAF3F4-7316-4887-B0BD-48E3A10678BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEBAF3F4-7316-4887-B0BD-48E3A10678BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEBAF3F4-7316-4887-B0BD-48E3A10678BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEBAF3F4-7316-4887-B0BD-48E3A10678BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1E5348D-0593-4281-94FD-7CED4BA1219E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1E5348D-0593-4281-94FD-7CED4BA1219E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1E5348D-0593-4281-94FD-7CED4BA1219E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1E5348D-0593-4281-94FD-7CED4BA1219E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
