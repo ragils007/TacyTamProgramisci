@@ -1,7 +1,10 @@
 ﻿using System;
+using Db.Pgsql.Factory;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Db.Pgsql;
+using System.Data;
 
 namespace BeetRootDoctorPage.Models
 {
@@ -10,34 +13,23 @@ namespace BeetRootDoctorPage.Models
         public static List<HistoriaViewModel> GetHistoriaZdarzen()
         {
             List<HistoriaViewModel> historiaZdarzen = new List<HistoriaViewModel>();
-            /*
-              //#TODO Zapytanie o zdarzenia
-              foreach (var rawWizyta in raw)
-              {
-                  listaWizyt.Add(new WizytyViewModel()
-                  {
-                      dataRozpoczeciaWizyty = rawWizyta.DATA_OD,
-                      dataZakonczeniaWizyty = rawWizyta.DATA_DO,
-                      czasWizyty = rawWizyta.DATA_DO != null ? rawWizyta.DATA_DO - rawWizyta.DATA_OD : null,
-                      kodKrotkiKlienta = wybranyKlient.KodKrotki,
-                      idPracownika = rawWizyta.PRACOWNIK_W_FK,
-                      notatka = rawWizyta.NOTATKA
-                  });
-              }
-              */
 
-            historiaZdarzen.Add(new HistoriaViewModel()
+            var db = new Postgres();
+            var cameralogDt = db.Query("SELECT cl.*, c.name as nameFromCameras, f.fieldname as nameFromField  FROM cameralog cl join cameras c on c.id = cl.camera_fk join fields f on f.id = cl.field_fk ");
+
+            foreach (DataRow dr in cameralogDt.Fetch().Rows)
             {
-                id = 1,
-                aktualnaNazwaKamery = "KAMERA_1",
-                aktualnaNazwaPola = "POLE_1",
-                historycznaNazwaKamery = "KAMERA_A",
-                historycznaNazwaPola = "POLE_A",
-                urlZdjecia = "TEST_URL",
-                geolat = "0000",
-                geolon = "1111"
-            });
+                HistoriaViewModel newObj = new HistoriaViewModel();
+                newObj.id = Convert.ToInt32(dr["id"]);
+                newObj.aktualnaNazwaKamery = Convert.ToString(dr["namefromcameras"]);
+                newObj.nazwaPola = Convert.ToString(dr["namefromfield"]);
+                newObj.historycznaNazwaKamery = Convert.ToString(dr["name"]);
+                newObj.urlZdjecia = Convert.ToString(dr["url"]);
+                newObj.geolat = Convert.ToString(dr["geolat"]);
+                newObj.geolon = Convert.ToString(dr["geolon"]);
 
+                historiaZdarzen.Add(newObj);
+            }
             return historiaZdarzen;
         }
     }

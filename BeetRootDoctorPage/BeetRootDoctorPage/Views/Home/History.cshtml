@@ -10,51 +10,47 @@
     <div class="card-body">
         <div class="card-text">
 
-            <table id="id_historiaWizyt" class="table table-bordered table-sm">
+            <table id="id_historia" class="table table-bordered table-sm">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Aktualna nazwa kamery</th>
-                        <th scope="col">Aktualna nazwa pola</th>
+                        <th scope="col">Nazwa pola</th>
                         <th scope="col">Historyczna nazwa kamery</th>
-                        <th scope="col">Historyczna nazwa pola</th>
                         <th scope="col">Długość geograficzna</th>
                         <th scope="col">Szerokość geograficzna</th>
+                        <th scope="col">Zdjęcie zdarzenia</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
                         @foreach (var zdarzenie in historiaZdarzen)
                         {
                     <tr>
                         <td>@zdarzenie.id</td>
                         <td>@zdarzenie.aktualnaNazwaKamery</td>
-                        <td>@zdarzenie.aktualnaNazwaPola</td>
+                        <td>@zdarzenie.nazwaPola</td>
                         <td>@zdarzenie.historycznaNazwaKamery</td>
-                        <td>@zdarzenie.historycznaNazwaPola</td>
                         <td>@zdarzenie.geolat</td>
                         <td>@zdarzenie.geolon</td>
+                        <td></td>
                     </tr>
                         }
-                    
                 </tbody>
             </table>
-
-
-
         </div>
     </div>
 </div>
-@*
+
     @section AddToHead
         {
         <link rel="stylesheet" href="~/css/datepicker.min.css" />
-    }*@
+    }
+
 @section Scripts
     {
     <script>
 
-        $('#id_historiaWizyt').DataTable({
+        $('#id_historia').DataTable({
             "language": {
                 "url": "@Url.Content("~/js/DataTablePolish.json")"
             }
