@@ -9,9 +9,8 @@ namespace BeetRootDoctorPage.Models
     {
         public int id { get; set; }
         public string aktualnaNazwaKamery { get; set; }
-        public string aktualnaNazwaPola { get; set; }
+        public string nazwaPola { get; set; }
         public string historycznaNazwaKamery { get; set; }
-        public string historycznaNazwaPola { get; set; }
         public string urlZdjecia { get; set; }
         public string geolat { get; set; }
         public string geolon { get; set; }

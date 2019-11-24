@@ -15,36 +15,21 @@ namespace BeetRootDoctorPage.Models
             List<HistoriaViewModel> historiaZdarzen = new List<HistoriaViewModel>();
 
             var db = new Postgres();
-            var cameralogDt = db.Query("SELECT * FROM cameralog");
-
+            var cameralogDt = db.Query("SELECT cl.*, c.name as nameFromCameras, f.fieldname as nameFromField  FROM cameralog cl join cameras c on c.id = cl.camera_fk join fields f on f.id = cl.field_fk ");
 
             foreach (DataRow dr in cameralogDt.Fetch().Rows)
             {
                 HistoriaViewModel newObj = new HistoriaViewModel();
                 newObj.id = Convert.ToInt32(dr["id"]);
-                newObj.aktualnaNazwaKamery = Convert.ToString(dr["camera_fk"]);
-                newObj.aktualnaNazwaPola = Convert.ToString(dr["field_fk"]);
+                newObj.aktualnaNazwaKamery = Convert.ToString(dr["namefromcameras"]);
+                newObj.nazwaPola = Convert.ToString(dr["namefromfield"]);
                 newObj.historycznaNazwaKamery = Convert.ToString(dr["name"]);
-                newObj.historycznaNazwaPola = Convert.ToString(dr["field_fk"]);
                 newObj.urlZdjecia = Convert.ToString(dr["url"]);
                 newObj.geolat = Convert.ToString(dr["geolat"]);
                 newObj.geolon = Convert.ToString(dr["geolon"]);
 
                 historiaZdarzen.Add(newObj);
             }
-
-            historiaZdarzen.Add(new HistoriaViewModel()
-            {
-                id = 1,
-                aktualnaNazwaKamery = "KAMERA_1",
-                aktualnaNazwaPola = "POLE_1",
-                historycznaNazwaKamery = "KAMERA_A",
-                historycznaNazwaPola = "POLE_A",
-                urlZdjecia = "TEST_URL",
-                geolat = "0000",
-                geolon = "1111"
-            });
-
             return historiaZdarzen;
         }
     }
