@@ -15,17 +15,24 @@ namespace Db.Pgsql.Factory
 
         public void Add(string name)
         {
-            this.pg.Execute($@"INSERT INTO fields(fieldname) VALUES (''{name}')");
+            this.pg.Query("INSERT INTO fields(fieldname) VALUES (:name)")
+                .Bind("name", name)
+                .Execute();
         }
 
         public void Edit(long id, string name)
         {
-            this.pg.Execute($@"UPDATE fields SET fieldname='{name}' WHERE id = {id}");
+            this.pg.Query("UPDATE fields SET fieldname = :name WHERE id = :id")
+                .Bind("name", name)
+                .Bind("id", id)
+                .Execute();
         }
 
         public void Delete(long id)
         {
-            this.pg.Execute($@"DELETE FROM fields WHERE id = {id}");
+            this.pg.Query("DELETE FROM fields WHERE id = :id")
+                .Bind("id", id)
+                .Execute();
         }
     }
 }

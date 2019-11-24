@@ -17,22 +17,38 @@ namespace Db.Pgsql.Factory
 
         public void Add(long currentFieldfk, string name, string geoLat, string geoLon)
         {
-            pg.Execute($@"INSERT INTO cameras(currentfield_fk, name, geolat, geolon) VALUES ({currentFieldfk}, '{name}', '{geoLat}', '{geoLon}')");
+            pg.Query($@"INSERT INTO cameras(currentfield_fk, name, geolat, geolon) VALUES (:fieldId, :name, :lat, :lon)")
+                .Bind("fieldId", currentFieldfk)
+                .Bind("name", name)
+                .Bind("lat", geoLat)
+                .Bind("lon", geoLon)
+                .Execute();
         }
 
         public void Edit(long id, long currentFieldfk, string name, string geoLat, string geoLon)
         {
-            pg.Execute($@"UPDATE cameras SET currentfield_fk={currentFieldfk}, name='{name}', geolat='{geoLat}', geolon='{geoLon}' WHERE id = {id}");
+            pg.Query($@"UPDATE cameras SET currentfield_fk=:fieldId, name=:name, geolat=:lat, geolon=:lon WHERE id = :id")
+                .Bind("fieldId", currentFieldfk)
+                .Bind("name", name)
+                .Bind("lat", geoLat)
+                .Bind("lon", geoLon)
+                .Bind("id", id)
+                .Execute();
         }
 
         public void Delete(long id)
         {
-            pg.Execute($@"DELETE FROM cameras WHERE id = {id}");
+            pg.Query($@"DELETE FROM cameras WHERE id = :id")
+                .Bind("id", id)
+                .Execute();
         }
 
         public cameras GetBy_Id(long id)
         {
-            var data = this.pg.Fetch($"SELECT * FROM cameras WHERE id={id}");
+            var data = this.pg.Query($"SELECT * FROM cameras WHERE id=:id")
+                .Bind("id", id)
+                .Fetch();
+
             if (data.Rows.Count == 0) return null;
 
             var cam = this.GetItemFromDatarow(data.Rows[0]);
